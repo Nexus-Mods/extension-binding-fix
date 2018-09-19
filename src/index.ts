@@ -43,13 +43,13 @@ function main(context: types.IExtensionContext) {
       } else {
         context.api.showDialog('info', t('Fix Bindings'), {
           text: t('There were {{count}} mods with broken bindings but no matching archive '
-                  + 'was found for any of them', { replace: { count: unBoundMods.length } }),
+                  + 'was found for any of them.', { replace: { count: unBoundMods.length } }),
           options: { translated: true },
         }, [ { label: 'Close' } ]);
       }
     } else {
       context.api.showDialog('question', 'Fix Bindings', {
-        text: t('The following mods can be bound to the corresponding archive'),
+        text: t('The following mods can be bound to the corresponding archive:'),
         checkboxes: reassign.map(assign => ({
             id: assign.modId,
             text: `${util.renderModName(mods[assign.modId])} -> ${knownDownloads[assign.archiveId].localPath}`,
