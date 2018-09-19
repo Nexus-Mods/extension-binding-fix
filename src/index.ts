@@ -57,7 +57,13 @@ function main(context: types.IExtensionContext) {
         options: { translated: true },
       }, [
         { label: 'Cancel' },
-        { label: 'Fix', action: () => fix(context.api, reassign) } ]);
+        { label: 'Fix' }
+      ])
+      .then(result => {
+        if (result.action === 'Fix') {
+          fix(context.api, reassign.filter(assign => result.input[assign.modId] === true));
+        }
+      });
     }
   });
 
