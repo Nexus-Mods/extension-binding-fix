@@ -15,7 +15,7 @@ function main(context: types.IExtensionContext) {
 
   context.registerReducer(['persistent', 'mods'], modsReducer);
 
-  context.registerAction('mod-icons', 100, 'refresh', {}, 'Fix Bindings', () => {
+  context.registerAction('mod-icons', 100, 'recover', {}, 'Fix Bindings', () => {
     const state: types.IState = context.api.store.getState();
     const gameMode = selectors.activeGameId(state);
     const knownDownloads: { [dlId: string]: types.IDownload } =
