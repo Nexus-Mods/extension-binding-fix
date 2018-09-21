@@ -1,11 +1,12 @@
 import { setModArchive } from './actions';
 import modsReducer from './reducer';
-import { selectors, types, util } from 'vortex-api'; 
+import { actions, selectors, types, util } from 'vortex-api'; 
 
 function fix(api: types.IExtensionApi, assignments: Array<{ modId: string, archiveId: string }>) {
   const gameMode = selectors.activeGameId(api.store.getState());
   assignments.forEach(assign => {
     api.store.dispatch(setModArchive(gameMode, assign.modId, assign.archiveId));
+    api.store.dispatch(actions.setDownloadInstalled(assign.archiveId, gameMode, assign.modId));
   });
 }
 
