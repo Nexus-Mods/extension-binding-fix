@@ -1,6 +1,6 @@
 {
   "name": "archive-binding-fix",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Fixes mods not being bound to the correct archive.",
   "main": "./out/index.js",
   "repository": "",
